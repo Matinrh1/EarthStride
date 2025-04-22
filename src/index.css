@@ -1,0 +1,13 @@
+@import "tailwindcss";
+@import url('@fortawesome/fontawesome-free/css/all.min.css');
+.custom-icon {
+  color: transparent;   
+  -webkit-text-stroke: 1.5px black; 
+}
+Footer li{
+  cursor: pointer;
+  color:rgb(156, 147, 147)
+}
+Footer li:hover{
+  color:white
+}
