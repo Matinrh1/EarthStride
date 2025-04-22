@@ -318,7 +318,7 @@ const MenShoes = () => {
                     <button
                       key={size}
                       onClick={() => toggleFilter("size", size)}
-                      className={`min-w-[64px] text-center whitespace-nowrap border px-2 py-1 text-sm hover:bg-gray-400 cursor-pointer ${
+                      className={`border px-2 lg:px-3 xl:px-5 py-1 text-sm hover:bg-gray-400 cursor-pointer ${
                         filters.size.includes(size)
                           ? "bg-slate-900 text-white"
                           : ""
