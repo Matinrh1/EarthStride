@@ -312,7 +312,7 @@ const MenShoes = () => {
               </div>
 
               {/* W/M Sizes */}
-              <div className="w-full max-w-md mx-auto">
+              <div className="w-full max-w-fit mx-auto">
                 <div className="grid grid-cols-4 gap-2">
                   {wmSizes.map((size) => (
                     <button
