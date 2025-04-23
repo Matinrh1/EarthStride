@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import nature from "../assets/back-grounds/house.png";
+import nature2 from "../assets/back-grounds/test8.png"
 import New from "../assets/back-grounds/test4.png";
 import shoe from "../assets/back-grounds/test2.png";
 import { Link } from "react-router-dom";
@@ -12,7 +13,7 @@ const HeroSection = () => {
 
   const images = [
     {
-      src: nature,
+      src: screenIsMdUp ? nature : nature2,
       alt: "Sustainable Earthstride Shoes",
       headline: "Curious",
       sub: " by Nature",
