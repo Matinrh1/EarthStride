@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom"; 
+import { useLocation } from "react-router-dom";
 
 const Footer = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const location = useLocation(); 
-  const showEmailSignup = location.pathname === "/men" || location.pathname === "/women"; 
+  const location = useLocation();
+  const showEmailSignup =
+    location.pathname === "/men" || location.pathname === "/women";
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -33,7 +34,7 @@ const Footer = () => {
           </h3>
           <div className="flex flex-col md:flex-row gap-3">
             <input
-              type="email" 
+              type="email"
               placeholder="Your email"
               className="flex-1 p-3 rounded-xs bg-gray-500 text-black outline-none border-b-2 border-white focus:shadow-[inset_0_-4px_12px_rgba(0,0,0,0.4),inset_0_4px_12px_rgba(0,0,0,0.4)]"
             />
@@ -45,7 +46,6 @@ const Footer = () => {
       )}
 
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-        
         <div>
           <h3 className="font-semibold text-xl text-center md:text-left">
             HELP
@@ -61,7 +61,6 @@ const Footer = () => {
           </ul>
         </div>
 
-       
         <div>
           <h3 className="font-semibold text-xl text-center md:text-left">
             SHOP
@@ -77,7 +76,6 @@ const Footer = () => {
           </ul>
         </div>
 
-     
         <div>
           <h3 className="font-semibold text-xl text-center md:text-left">
             COMPANY
@@ -102,10 +100,11 @@ const Footer = () => {
         </div>
       </div>
 
-      
       <div className="max-w-7xl mx-auto mt-10 flex flex-wrap md:justify-between flex-col md:flex-row items-center">
         <div>
-          <h3 className="font-semibold text-xl text-center">FOLLOW THE FLOCK</h3>
+          <h3 className="font-semibold text-xl text-center">
+            FOLLOW THE FLOCK
+          </h3>
           <p className="text-sm mt-2 max-w-xs md:pl-4 text-center md:text-left">
             Exclusive offers, a heads-up on new things, and sightings of
             Earthstride in the wild. Oh, we have cute sheep, too. #earthstride
@@ -134,11 +133,37 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="flex space-x-2 text-5xl w-fit flex-wrap cursor-pointer">
+        <div className="flex space-x-4 space-y-4 w-fit flex-wrap cursor-pointer bg-[#212121] p-4 justify-center">
+          {[
+            ["us", "US"],
+            ["ca", "Canada"],
+            ["au", "Australia"],
+            ["gb", "UK"],
+            ["cn", "China"],
+            ["de", "Germany"],
+            ["eu", "EU"],
+            ["jp", "Japan"],
+            ["kr", "South Korea"],
+            ["ae", "UAE"],
+          ].map(([code, name]) => (
+            <div
+              key={code}
+              className="w-16 h-10 bg-white rounded shadow flex items-center justify-center overflow-hidden"
+            >
+              <img
+                src={`https://flagcdn.com/${code}.svg`}
+                alt={name}
+                className="w-full h-full object-cover"
+              />
+            </div>
+          ))}
+        </div>
+
+        {/* <div className="flex space-x-2 text-5xl w-fit flex-wrap cursor-pointer">
           <span>🇺🇸</span> <span>🇨🇦</span> <span>🇦🇺</span> <span>🇬🇧</span>
           <span>🇨🇳</span> <span>🇩🇪</span> <span>🇪🇺</span> <span>🇯🇵</span>
           <span>🇰🇷</span> <span>🇦🇪</span>
-        </div>
+        </div> */}
       </div>
 
       <div className="text-center text-xs mt-6">
