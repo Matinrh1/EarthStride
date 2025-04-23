@@ -97,7 +97,7 @@ const ProductColorsSlider = ({ product, handleColorChange }) => {
           <i className="fas fa-chevron-left text-base"></i>
         </button>
 
-        <div className="w-full overflow-hidden pl-12 [@media(min-width:325px)]:pl-16 [@media(min-width:365px)]:pl-17 [@media(min-width:395px)]:pl-11 [@media(min-width:440px)]:pl-13 [@media(min-width:465px)]:pl-15 [@media(min-width:525px)]:pl-11 [@media(min-width:580px)]:pl-13 [@media(min-width:600px)]:pl-15 [@media(min-width:640px)]:pl-13 [@media(min-width:700px)]:pl-15 [@media(min-width:767px)]:pl-13 [@media(min-width:860px)]:pl-11 [@media(min-width:950px)_and_(max-width:1024px)]:pl-13 [@media(min-width:1024px)_and_(max-width:1100px)]:ml-4 pr-6 sm:pr-7  lg:pr-10 [@media(min-width:1440px)]:pr-5 [@media(min-width:1200px)]:pr-6 xl:pr-8 ">
+        <div className="w-full overflow-hidden pl-12 [@media(min-width:325px)]:pl-16 [@media(min-width:365px)]:pl-18 [@media(min-width:395px)]:pl-11 [@media(min-width:440px)]:pl-13 [@media(min-width:465px)]:pl-15 [@media(min-width:525px)]:pl-11 [@media(min-width:580px)]:pl-13 [@media(min-width:600px)]:pl-15 [@media(min-width:640px)]:pl-13 [@media(min-width:700px)]:pl-15 [@media(min-width:767px)]:pl-13 [@media(min-width:860px)]:pl-11 [@media(min-width:950px)_and_(max-width:1024px)]:pl-13 [@media(min-width:1024px)_and_(max-width:1100px)]:ml-4 pr-6 sm:pr-7  lg:pr-10 [@media(min-width:1440px)]:pr-5 [@media(min-width:1200px)]:pr-6 xl:pr-8 ">
           <Slider ref={sliderRef} {...settings} className="">
             {product.colors.map((color, index) => (
               <div key={index} className="flex justify-center outline-none">
