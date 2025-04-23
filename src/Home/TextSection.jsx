@@ -1,7 +1,7 @@
 import tc from "../assets/back-grounds/textsection.png"
 export default function TextSection() {
     return (
-      <section className="relative w-full flex items-center justify-center text-center text-white py-20 px-4">
+      <section className="relative w-full flex items-center justify-center text-center text-white py-12 md:py-20 px-4">
         {/* Background Image */}
         <img 
           src={tc}
