@@ -442,7 +442,7 @@ const WomenShoes = () => {
 
                   {/* Product Name & Price */}
                   <div className="min-h-20">
-                    <h2 className="lg:text-lg w-fit font-semibold mt-2">
+                    <h2 className="sm:text-lg w-fit font-semibold mt-2">
                       {product.name}
                     </h2>
                     <p className="text-gray-700">{product.price}</p>
