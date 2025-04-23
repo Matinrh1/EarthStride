@@ -225,7 +225,7 @@ const WomenShoes = () => {
           } transform duration-300 ease-in-out overflow-y-auto max-h-full lg:block`}
         >
           <p
-            className="pt-3 lg:pt-0 pb-5 font-semibold hover:underline cursor-pointer inline-block"
+            className="pt-3 lg:pt-0 pb-5 font-semibold underline cursor-pointer inline-block"
             onClick={() => {
               setIsSidebarOpen(true);
               setTimeout(() => {
