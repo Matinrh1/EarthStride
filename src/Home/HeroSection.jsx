@@ -117,7 +117,7 @@ const HeroSection = () => {
             {images[currentImage].subheadline}
           </p>
           {currentImage === 1 ? (
-            <div className="flex flex-row gap-4 justify-center [@media(min-width:520px)]:justify-end ">
+            <div className="flex flex-row gap-4 justify-center [@media(min-width:520px)]:justify-end mb-3">
               <Link
                 to="/men"
                 className="bg-white sm:w-40 text-center min-w-fit text-black px-5 sm:px-2 py-2 text-lg font-semibold rounded-sm z-30 hover:bg-slate-900 hover:text-white transition"
@@ -132,7 +132,7 @@ const HeroSection = () => {
               </Link>
             </div>
           ) : (
-            <div className="justify-center z-20 mb-2">
+            <div className="justify-center z-20 mb-5">
               <Link
                 to="/men"
                 href="#"
