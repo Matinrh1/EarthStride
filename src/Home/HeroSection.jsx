@@ -47,7 +47,7 @@ const HeroSection = () => {
 
   return (
     <>
-      <div className="relative w-full top-25 lg:top-8 h-screen bg-neutral-200">
+      <div className="relative w-full top-25 lg:top-8  h-[85vh] sm:h-screen bg-neutral-200">
         <div className=" w-full  bg-neutral-200 pt-7 lg:pt-10  pb-5 z-50 flex justify-center space-x-10  text-sm md:text-base font-medium">
           <a
             href="#"
@@ -69,7 +69,7 @@ const HeroSection = () => {
           </a>
         </div>
 
-        <div className="relative w-full h-10/11 flex">
+        <div className="relative w-full  h-10/11 flex">
           {images.map((image, index) =>
             index === 1 && image.src === New ? (
               <div
