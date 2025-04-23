@@ -412,11 +412,11 @@ const WomenShoes = () => {
                 Men
               </Link>
             </div>
-            <div className="lg:hidden pl-4 pt-1">
-              <button
-                onClick={() => setIsSidebarOpen(false)}
-                className="flex items-center gap-2 border-1 border-gray-500 mx-2 rounded-full px-4 py-2 text-sm font-semibold text-black hover:bg-gray-100 transition"
-              >
+            <div
+              onClick={() => setIsSidebarOpen(false)}
+              className="lg:hidden pl-4 pt-1 "
+            >
+              <button className="flex items-center gap-2 border-1 border-gray-500 mx-2 rounded-full px-4 py-3 text-sm font-semibold text-black hover:bg-gray-100 transition cursor-pointer">
                 <span>FILTERS</span>
                 <i className="fas fa-sliders-h text-lg"></i>
               </button>
