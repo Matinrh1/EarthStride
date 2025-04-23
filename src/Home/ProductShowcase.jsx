@@ -54,10 +54,13 @@ const ProductShowcase = () => {
   return (
     <div className="max-w-[1400px] mx-auto grid [@media(min-width:900px)]:grid-cols-2 gap-4 md:px-2 py-15">
       {/* Left Section (Hero) */}
-      <div
-        className="relative h-full min-h-[500px] bg-cover bg-center flex items-end justify-start p-10 text-white"
-        style={{ backgroundImage: `url(${bluebg})` }}
-      >
+      <div className="relative h-full min-h-[500px] flex items-end justify-start p-10 text-white group overflow-hidden">
+        {/* Background Image */}
+        <div
+          className="absolute inset-0 bg-cover bg-center transition-transform duration-300 scale-100 group-hover:scale-105"
+          style={{ backgroundImage: `url(${bluebg})` }}
+        />
+
         {/* Text & Buttons */}
         <div className="relative z-10 md:w-4/5">
           <h1 className="md:text-3xl text-2xl font-bold">
@@ -67,12 +70,16 @@ const ProductShowcase = () => {
             Cool shades to put some spring in your step.
           </p>
           <div className="mt-6 space-x-3 flex items-center justify-center text-center">
-           
-           <a href="/men" className="bg-white w-full text-black md:px-6 py-2 rounded-md hover:bg-slate-900 hover:text-white duration-200 transition-all cursor-pointer">
+            <a
+              href="/men"
+              className="bg-white w-full text-black md:px-6 py-2 rounded-md hover:bg-slate-900 hover:text-white duration-200 transition-all cursor-pointer"
+            >
               SHOP MEN
             </a>
-           
-            <a href="/women" className="bg-white w-full min-w-fit text-black md:px-6 py-2 rounded-md hover:bg-slate-900 hover:text-white duration-200 transition-all cursor-pointer">
+            <a
+              href="/women"
+              className="bg-white w-full min-w-fit text-black md:px-6 py-2 rounded-md hover:bg-slate-900 hover:text-white duration-200 transition-all cursor-pointer"
+            >
               SHOP WOMEN
             </a>
           </div>
@@ -92,10 +99,10 @@ const ProductShowcase = () => {
           }}
           navigation
           pagination={{ clickable: true }}
-          loop={true} // 🔁 Enables infinite looping
+          loop={true}
           autoplay={{
-            delay: 3000, // ⏳ Auto-scroll every 3s
-            disableOnInteraction: false, // ↪️ Keeps autoplay active after user interaction
+            delay: 3000,
+            disableOnInteraction: false,
           }}
           className="w-full"
         >
@@ -138,10 +145,16 @@ const ProductCard = ({ product }) => {
       </div>
 
       <div className="absolute inset-0 flex flex-col items-center justify-center space-y-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
-        <a href="/men" className="bg-white w-45 text-black font-semibold px-4 py-2 hover:bg-black hover:text-white transition-all duration-200 cursor-pointer text-center">
+        <a
+          href="/men"
+          className="bg-white w-45 text-black font-semibold px-4 py-2 hover:bg-black hover:text-white transition-all duration-200 cursor-pointer text-center"
+        >
           SHOP MEN
         </a>
-        <a href="/women" className="bg-white w-45 text-black font-semibold px-4 py-2 hover:bg-black hover:text-white transition-all duration-200 cursor-pointer text-center">
+        <a
+          href="/women"
+          className="bg-white w-45 text-black font-semibold px-4 py-2 hover:bg-black hover:text-white transition-all duration-200 cursor-pointer text-center"
+        >
           SHOP WOMEN
         </a>
       </div>
