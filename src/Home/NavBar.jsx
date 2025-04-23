@@ -72,10 +72,7 @@ const Navbar = () => {
           href="#"
           className="text-2xl sm:text-3xl font-bold italic absolute left-1/2 transform -translate-x-1/2"
         >
-          <Link
-            to="/"
-            onClick={() => window.scrollTo(0, 0)}
-          >
+          <Link to="/" onClick={() => window.scrollTo(0, 0)}>
             𝐸𝒶𝓇𝓉𝒽𝒮𝓉𝓇𝒾𝒹𝑒
           </Link>
         </a>
@@ -112,7 +109,12 @@ const Navbar = () => {
           menuOpen ? "h-screen opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <ul className="flex flex-col space-y-8 lg:space-y-10 font-medium text-sm uppercase max-h-[500px] opacity-100">
+        <ul className="flex flex-col space-y-7 lg:space-y-8 font-medium text-sm uppercase max-h-[500px] opacity-100">
+          <li className="border-b border-gray-300 pb-2">
+            <a href="/" className="hover:border-b">
+              Home
+            </a>
+          </li>
           <li className="border-b border-gray-300 pb-2">
             <a href="/men" className="hover:border-b">
               Men
