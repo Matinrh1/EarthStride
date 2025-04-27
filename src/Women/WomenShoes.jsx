@@ -68,14 +68,17 @@ const WomenShoes = () => {
     "Canvas",
   ];
   const hueOptions = [
-    { name: "Blue", color: "#4A6484" },
     { name: "White", color: "#dddddd" },
+    { name: "White", color: "#dddddd" },
+    { name: "Orange", color: "#FBB365" },
     { name: "Beige", color: "#D8C3A5" },
     { name: "Brown", color: "#8D6E63" },
     { name: "Green", color: "#4F6F52" },
     { name: "Red", color: "#B71C1C" },
     { name: "Grey", color: "#757575" },
     { name: "Black", color: "#000000" },
+    { name: "Mauve", color: "#B784A7" },
+
   ];
 
   const [selectedHues, setSelectedHues] = useState([]);
@@ -193,6 +196,62 @@ const WomenShoes = () => {
   }
 
   const isSmOrLarger = useScreenWidth();
+  const filteredProducts = products.filter((product) => {
+    const matchesSize =
+      filters.size.length === 0 ||
+      filters.size.some((size) => product.sizesAvailable.includes(size));
+
+    const matchesBestFor =
+      filters.bestFor.length === 0 ||
+      filters.bestFor.some((best) => product.bestFor.includes(best));
+
+    const matchesMaterial =
+      filters.material.length === 0 ||
+      filters.material.some((material) => product.materials.includes(material));
+
+    const matchesHue =
+      selectedHues.length === 0 ||
+      selectedHues.some((hue) =>
+        product.colors.some((color) => color.hues.includes(hue))
+      );
+
+    if (matchesSize && matchesBestFor && matchesMaterial && matchesHue) {
+      const selectedColor = product.colors.find((color) =>
+        selectedHues.some((hue) => color.hues.includes(hue))
+      );
+
+      product.image = selectedColor ? selectedColor.image : product.image;
+
+      return true;
+    }
+
+    return false;
+  });
+  useEffect(() => {
+    if (selectedHues.length > 0) {
+      const newSelectedImages = {};
+
+      products.forEach((product) => {
+        const matchingColor = product.colors.find((color) =>
+          selectedHues.some((hue) => color.hues.includes(hue))
+        );
+
+        if (matchingColor) {
+          newSelectedImages[product.id] = matchingColor.image;
+        } else {
+          newSelectedImages[product.id] = product.image;
+        }
+      });
+
+      setSelectedImages(newSelectedImages);
+    } else {
+      const resetImages = products.reduce((acc, product) => {
+        acc[product.id] = product.image;
+        return acc;
+      }, {});
+      setSelectedImages(resetImages);
+    }
+  }, [selectedHues]);
 
   return (
     <div className="relative">
@@ -231,7 +290,7 @@ const WomenShoes = () => {
               }, 10);
             }}
           >
-            Home 
+            Home
           </p>
           <div className="pb-5">
             <h3 className="font-semibold text-3xl">Women's Shoes</h3>
@@ -422,7 +481,12 @@ const WomenShoes = () => {
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-3 gap-2 sm:gap-6">
-            {products.map((product, index) => (
+          {filteredProducts.length === 0 ? (
+              <div className="col-span-full text-center py-4">
+                <p>Sorry, there is no results</p>
+              </div>
+            ) : (
+            filteredProducts.map((product, index) => (
               <React.Fragment key={product.id}>
                 {/* Product Card */}
                 <div className="rounded-lg p-1 sm:p-4 sm:shadow-sm relative group hover:shadow-[0px_6px_20px_rgba(0,0,5,0.3)]">
@@ -450,6 +514,7 @@ const WomenShoes = () => {
                   <ProductColorsSlider
                     product={product}
                     handleColorChange={handleColorChange}
+                    selectedHues={selectedHues}
                   />
 
                   {/* Shoe Sizes (Appear on Hover) */}
@@ -564,7 +629,7 @@ const WomenShoes = () => {
                   </div>
                 ) : null}
               </React.Fragment>
-            ))}
+             )))}
           </div>
         </div>
       </div>

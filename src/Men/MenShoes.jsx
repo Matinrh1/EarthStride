@@ -25,7 +25,7 @@ const MenShoes = () => {
       [productId]: selectedImage,
     }));
   };
-  
+
   const sizes = [
     "8",
     "8.5",
@@ -212,16 +212,16 @@ const MenShoes = () => {
 
     const matchesHue =
       selectedHues.length === 0 ||
-      selectedHues.some(
-        (hue) => product.colors.some((color) => color.hues.includes(hue)) 
+      selectedHues.some((hue) =>
+        product.colors.some((color) => color.hues.includes(hue))
       );
 
     if (matchesSize && matchesBestFor && matchesMaterial && matchesHue) {
-      const selectedColor = product.colors.find(
-        (color) => selectedHues.some((hue) => color.hues.includes(hue)) 
+      const selectedColor = product.colors.find((color) =>
+        selectedHues.some((hue) => color.hues.includes(hue))
       );
 
-      product.image = selectedColor ? selectedColor.image : product.image; 
+      product.image = selectedColor ? selectedColor.image : product.image;
 
       return true;
     }
@@ -480,148 +480,154 @@ const MenShoes = () => {
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-3 gap-2 sm:gap-6 ">
-            {filteredProducts.map((product, index) => (
-              <React.Fragment key={product.id}>
-                <div className="rounded-lg p-1 sm:p-4 sm:shadow-sm relative group hover:shadow-[0px_6px_20px_rgba(0,0,5,0.3)]">
-                  <div className="relative bg-gray-100 cursor-pointer">
-                    <img
-                      src={selectedImages[product.id] || product.image}
-                      alt={product.name}
-                      className="w-full  object-cover rounded"
-                    />
-                    <span className="bg-white text-sm font-semibold px-2 m-1 [@media(min-width:450px)]:m-4 py-1 rounded ">
-                      {product.label}
-                    </span>
-                  </div>
-
-                  {/* Product Name & Price */}
-                  <div className="min-h-20">
-                    <h2 className="sm:text-lg w-fit font-semibold mt-2">
-                      {product.name}
-                    </h2>
-                    <p className="text-gray-700">{product.price}</p>
-                  </div>
-
-                  {/* Color Variations Swiper */}
-                  <ProductColorsSlider
-                    product={product}
-                    handleColorChange={handleColorChange}
-                    selectedHues={selectedHues}
-                  />
-
-                  {/* Shoe Sizes (Appear on Hover) */}
-                  <div className="absolute hidden z-10 group-hover:block sm:bg-white sm:shadow-[0px_6px_20px_-8px_rgba(0,0,5,0.3)] p-3 w-full mt-2 left-0">
-                    <p className="hidden sm:block font-semibold text-sm mb-2">
-                      Quick Add
-                    </p>
-                    <div className="hidden sm:grid grid-cols-6 gap-1">
-                      {numericSizes.map((size) => (
-                        <button
-                          key={size}
-                          className="border border-black py-1 rounded-xs text-sm hover:bg-gray-200"
-                        >
-                          {size}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div
-                    key={MenShoes.id}
-                    className="sm:hidden relative mt-2 w-full"
-                  >
-                    <button
-                      onClick={() =>
-                        setOpenIndex(openIndex === index ? null : index)
-                      }
-                      className="flex justify-between items-center w-full p-3 bg-white border-t border-gray-300 text-left cursor-pointer"
-                    >
-                      <p className="font-semibold text-sm">Quick Add</p>
-                      <span className="text-2xl font-bold pb-1">
-                        {openIndex === index ? "−" : "+"}
+            {filteredProducts.length === 0 ? (
+              <div className="col-span-full text-center py-4">
+                <p>Sorry, there is no results</p>
+              </div>
+            ) : (
+              filteredProducts.map((product, index) => (
+                <React.Fragment key={product.id}>
+                  <div className="rounded-lg p-1 sm:p-4 sm:shadow-sm relative group hover:shadow-[0px_6px_20px_rgba(0,0,5,0.3)]">
+                    <div className="relative bg-gray-100 cursor-pointer">
+                      <img
+                        src={selectedImages[product.id] || product.image}
+                        alt={product.name}
+                        className="w-full  object-cover rounded"
+                      />
+                      <span className="bg-white text-sm font-semibold px-2 m-1 [@media(min-width:450px)]:m-4 py-1 rounded ">
+                        {product.label}
                       </span>
-                    </button>
+                    </div>
+
+                    {/* Product Name & Price */}
+                    <div className="min-h-20">
+                      <h2 className="sm:text-lg w-fit font-semibold mt-2">
+                        {product.name}
+                      </h2>
+                      <p className="text-gray-700">{product.price}</p>
+                    </div>
+
+                    {/* Color Variations Swiper */}
+                    <ProductColorsSlider
+                      product={product}
+                      handleColorChange={handleColorChange}
+                      selectedHues={selectedHues}
+                    />
+
+                    {/* Shoe Sizes (Appear on Hover) */}
+                    <div className="absolute hidden z-10 group-hover:block sm:bg-white sm:shadow-[0px_6px_20px_-8px_rgba(0,0,5,0.3)] p-3 w-full mt-2 left-0">
+                      <p className="hidden sm:block font-semibold text-sm mb-2">
+                        Quick Add
+                      </p>
+                      <div className="hidden sm:grid grid-cols-6 gap-1">
+                        {numericSizes.map((size) => (
+                          <button
+                            key={size}
+                            className="border border-black py-1 rounded-xs text-sm hover:bg-gray-200"
+                          >
+                            {size}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+
                     <div
-                      className={`transition-all duration-200 ease-in-out overflow-hidden ${
-                        openIndex === index
-                          ? "max-h-40 opacity-100"
-                          : "max-h-0 opacity-0"
-                      }`}
+                      key={MenShoes.id}
+                      className="sm:hidden relative mt-2 w-full"
                     >
-                      <div className="z-10 bg-white w-full left-0">
-                        <div className="grid grid-cols-4 gap-1">
-                          {numericSizes.map((size) => (
-                            <button
-                              key={size}
-                              className="border border-black py-1 rounded text-sm hover:bg-gray-200"
-                            >
-                              {size}
-                            </button>
-                          ))}
+                      <button
+                        onClick={() =>
+                          setOpenIndex(openIndex === index ? null : index)
+                        }
+                        className="flex justify-between items-center w-full p-3 bg-white border-t border-gray-300 text-left cursor-pointer"
+                      >
+                        <p className="font-semibold text-sm">Quick Add</p>
+                        <span className="text-2xl font-bold pb-1">
+                          {openIndex === index ? "−" : "+"}
+                        </span>
+                      </button>
+                      <div
+                        className={`transition-all duration-200 ease-in-out overflow-hidden ${
+                          openIndex === index
+                            ? "max-h-40 opacity-100"
+                            : "max-h-0 opacity-0"
+                        }`}
+                      >
+                        <div className="z-10 bg-white w-full left-0">
+                          <div className="grid grid-cols-4 gap-1">
+                            {numericSizes.map((size) => (
+                              <button
+                                key={size}
+                                className="border border-black py-1 rounded text-sm hover:bg-gray-200"
+                              >
+                                {size}
+                              </button>
+                            ))}
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
-                {index === 1 && (
-                  <div className="col-span-2 sm:col-span-1 flex flex-col h-[450px] sm:h-auto justify-center  sm:items-end text-center relative">
-                    <img
-                      src={canvass}
-                      alt="Canvas Sneakers"
-                      className="pt-4 h-full object-cover"
-                    />
+                  {index === 1 && (
+                    <div className="col-span-2 sm:col-span-1 flex flex-col h-[450px] sm:h-auto justify-center  sm:items-end text-center relative">
+                      <img
+                        src={canvass}
+                        alt="Canvas Sneakers"
+                        className="pt-4 h-full object-cover"
+                      />
 
-                    <div className="absolute flex flex-col justify-end w-full h-full items-center bg-opacity-40 text-white p-6">
-                      <h2 className="text-xl font-bold">
-                        Start With Fresh Canvas
-                      </h2>
-                      <p className="text-sm mt-2">
-                        Sophisticated sneakers, endless possibilities.
-                      </p>
+                      <div className="absolute flex flex-col justify-end w-full h-full items-center bg-opacity-40 text-white p-6">
+                        <h2 className="text-xl font-bold">
+                          Start With Fresh Canvas
+                        </h2>
+                        <p className="text-sm mt-2">
+                          Sophisticated sneakers, endless possibilities.
+                        </p>
 
-                      {/* Ensure buttons are in a row on large screens */}
-                      <div className="mt-4 w-full flex flex-col xl:flex-row lg:gap-2">
-                        <button className="w-full py-2 bg-white text-black font-semibold rounded-lg hover:bg-black hover:text-white cursor-pointer">
-                          SHOP MEN
-                        </button>
-                        <button className="mt-2 lg:mt-0 w-full py-2 bg-white text-black font-semibold rounded-lg hover:bg-black hover:text-white cursor-pointer">
-                          SHOP WOMEN
-                        </button>
+                        {/* Ensure buttons are in a row on large screens */}
+                        <div className="mt-4 w-full flex flex-col xl:flex-row lg:gap-2">
+                          <button className="w-full py-2 bg-white text-black font-semibold rounded-lg hover:bg-black hover:text-white cursor-pointer">
+                            SHOP MEN
+                          </button>
+                          <button className="mt-2 lg:mt-0 w-full py-2 bg-white text-black font-semibold rounded-lg hover:bg-black hover:text-white cursor-pointer">
+                            SHOP WOMEN
+                          </button>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                )}
+                  )}
 
-                {(isSmOrLarger && index === 6) ||
-                (!isSmOrLarger && index === 7) ? (
-                  <div className="col-span-2 sm:col-span-1 flex flex-col h-[450px] sm:h-auto justify-center sm:items-end text-center relative">
-                    <img
-                      src={spring}
-                      alt="Canvas Sneakers"
-                      className="pt-4 h-full object-cover"
-                    />
+                  {(isSmOrLarger && index === 6) ||
+                  (!isSmOrLarger && index === 7) ? (
+                    <div className="col-span-2 sm:col-span-1 flex flex-col h-[450px] sm:h-auto justify-center sm:items-end text-center relative">
+                      <img
+                        src={spring}
+                        alt="Canvas Sneakers"
+                        className="pt-4 h-full object-cover"
+                      />
 
-                    <div className="absolute flex flex-col justify-end w-full h-full items-center bg-opacity-40 text-white p-6">
-                      <h2 className="text-xl font-bold">
-                        Start With Fresh Canvas
-                      </h2>
-                      <p className="text-sm mt-2">
-                        Sophisticated sneakers, endless possibilities.
-                      </p>
+                      <div className="absolute flex flex-col justify-end w-full h-full items-center bg-opacity-40 text-white p-6">
+                        <h2 className="text-xl font-bold">
+                          Start With Fresh Canvas
+                        </h2>
+                        <p className="text-sm mt-2">
+                          Sophisticated sneakers, endless possibilities.
+                        </p>
 
-                      <div className="mt-4 w-full flex flex-col xl:flex-row lg:gap-2">
-                        <button className="w-full py-2 bg-white text-black font-semibold rounded-lg hover:bg-black hover:text-white cursor-pointer">
-                          SHOP MEN
-                        </button>
-                        <button className="mt-2 lg:mt-0 w-full py-2 bg-white text-black font-semibold rounded-lg hover:bg-black hover:text-white cursor-pointer">
-                          SHOP WOMEN
-                        </button>
+                        <div className="mt-4 w-full flex flex-col xl:flex-row lg:gap-2">
+                          <button className="w-full py-2 bg-white text-black font-semibold rounded-lg hover:bg-black hover:text-white cursor-pointer">
+                            SHOP MEN
+                          </button>
+                          <button className="mt-2 lg:mt-0 w-full py-2 bg-white text-black font-semibold rounded-lg hover:bg-black hover:text-white cursor-pointer">
+                            SHOP WOMEN
+                          </button>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                ) : null}
-              </React.Fragment>
-            ))}
+                  ) : null}
+                </React.Fragment>
+              ))
+            )}
           </div>
         </div>
       </div>
