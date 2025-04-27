@@ -67,10 +67,8 @@ const MenShoes = () => {
     "Tree Fiber Blend",
     "Wool",
     "Corduroy",
-    "Luxe Collection",
     "Cotton Blend",
     "Canvas",
-    "Free & Bouncy Sugar",
   ];
   const hueOptions = [
     { name: "White", color: "#dddddd" },
@@ -215,15 +213,15 @@ const MenShoes = () => {
     const matchesHue =
       selectedHues.length === 0 ||
       selectedHues.some(
-        (hue) => product.colors.some((color) => color.hues.includes(hue)) // Check if the hue is in the 'hues' array
+        (hue) => product.colors.some((color) => color.hues.includes(hue)) 
       );
 
     if (matchesSize && matchesBestFor && matchesMaterial && matchesHue) {
       const selectedColor = product.colors.find(
-        (color) => selectedHues.some((hue) => color.hues.includes(hue)) // Match the hue with 'hues' array
+        (color) => selectedHues.some((hue) => color.hues.includes(hue)) 
       );
 
-      product.image = selectedColor ? selectedColor.image : product.image; // Default to the product's main image if no hue matches
+      product.image = selectedColor ? selectedColor.image : product.image; 
 
       return true;
     }

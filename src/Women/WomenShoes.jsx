@@ -64,10 +64,8 @@ const WomenShoes = () => {
     "Tree Fiber Blend",
     "Wool",
     "Corduroy",
-    "Luxe Collection",
     "Cotton Blend",
     "Canvas",
-    "Free & Bouncy Sugar",
   ];
   const hueOptions = [
     { name: "Blue", color: "#4A6484" },
