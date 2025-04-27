@@ -69,7 +69,7 @@ const WomenShoes = () => {
   ];
   const hueOptions = [
     { name: "White", color: "#dddddd" },
-    { name: "White", color: "#dddddd" },
+    { name: "Blue", color: "#4A6484" },
     { name: "Orange", color: "#FBB365" },
     { name: "Beige", color: "#D8C3A5" },
     { name: "Brown", color: "#8D6E63" },
