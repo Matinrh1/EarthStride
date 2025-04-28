@@ -41,7 +41,7 @@ const ProductColorsSlider = ({ product, handleColorChange, selectedHues, }) => {
     afterChange: (index) => {
       setCurrentSlide(index);
       if (window.innerWidth < 395) {
-        const newColor = product.colors[index];
+        const newColor = product.colors[index].image;
         handleColorChange(product.id, newColor);
       }
     },
@@ -78,7 +78,7 @@ const ProductColorsSlider = ({ product, handleColorChange, selectedHues, }) => {
     beforeChange: (next) => {
       setCurrentSlide(next);
       if (window.innerWidth < 395) {
-        const newColor = product.colors[next];
+        const newColor = product.colors[next].image;
         handleColorChange(product.id, newColor);
       }
     },
@@ -107,7 +107,7 @@ const ProductColorsSlider = ({ product, handleColorChange, selectedHues, }) => {
         <div className="w-full overflow-hidden pl-12 [@media(min-width:325px)]:pl-16 [@media(min-width:365px)]:pl-18 [@media(min-width:395px)]:pl-11 [@media(min-width:440px)]:pl-13 [@media(min-width:465px)]:pl-15 [@media(min-width:525px)]:pl-11 [@media(min-width:580px)]:pl-13 [@media(min-width:600px)]:pl-15 [@media(min-width:640px)]:pl-13 [@media(min-width:700px)]:pl-15 [@media(min-width:767px)]:pl-13 [@media(min-width:860px)]:pl-11 [@media(min-width:950px)_and_(max-width:1024px)]:pl-13 [@media(min-width:1024px)_and_(max-width:1100px)]:ml-4 pr-6 sm:pr-7  lg:pr-10 [@media(min-width:1440px)]:pr-5 [@media(min-width:1200px)]:pr-6 xl:pr-8 ">
           <Slider ref={sliderRef} {...settings}>
             {filteredColors.map((color, index) => (
-              <div key={index} className="flex justify-center outline-none">
+              <div key={index} className="flex justify-center  outline-none">
                 <img
                   src={color.image}
                   alt={`Color variant ${index + 1}`}
